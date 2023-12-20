@@ -1,0 +1,23 @@
+
+h1 {
+    color: rgb(73, 85, 75);
+}  
+body {
+    background-color: #8a92b672;
+}
+
+P {
+    color:darkslategray
+}
+
+#nav-table { width: 1025px;}
+
+#nav-table 
+{
+    background-color: cadetblue;
+}
+
+
+  #new-background {background-image: url("myBackground.jpg");
+}
+
