@@ -1,80 +1,102 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Gradient Topography Animation | Demo 1 | Codrops</title>
-		<meta name="description" content="Shape animation based on a work called Gradient Topography by Polar Vector" />
-		<meta name="keywords" content="svg, animation, organic, shape, animejs, web design, web development, demo" />
-		<meta name="author" content="Codrops" />
-		<link rel="shortcut icon" href="favicon.ico">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400:700:900" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/base.css" />
-		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
-		<!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
-	</head>
-	<body class="demo-1">
-		<svg class="hidden">
-			<symbol id="icon-arrow" viewBox="0 0 24 24">
-				<title>arrow</title>
-				<polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "/>
-			</symbol>
-			<symbol id="icon-drop" viewBox="0 0 24 24">
-				<title>drop</title>
-				<path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z"/><path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z"/>
-			</symbol>
-			<symbol id="icon-github" viewBox="0 0 32.6 31.8">
-				<title>github</title>
-				<path d="M16.3,0C7.3,0,0,7.3,0,16.3c0,7.2,4.7,13.3,11.1,15.5c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4C7.4,10.7,6.8,9,7.7,6.8c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C32.6,7.3,25.3,0,16.3,0z"/>
-			</symbol>
-			<symbol id="icon-arrowback" viewBox="0 0 24 18">
-				<title>arrow-back</title>
-				<path d="M7.839 17.296a.847.847 0 0 0 1.21 0 .853.853 0 0 0 0-1.198L2.914 9.965h20.238A.843.843 0 0 0 24 9.118a.852.852 0 0 0-.847-.86H2.915l6.133-6.12a.868.868 0 0 0 0-1.21.847.847 0 0 0-1.21 0L.255 8.513a.833.833 0 0 0 0 1.197l7.585 7.586z" />
-			</symbol>
-		</svg>
-		<main>
-			<div class="content content--fixed">
-				<header class="codrops-header">
-					<div class="codrops-links">
-						<a class="codrops-icon codrops-icon--prev" href="https://tympanus.net/Development/DecorativeLetterAnimations/" title="Previous Demo"><svg class="icon icon--arrow"><use xlink:href="#icon-arrow"></use></svg></a>
-						<a class="codrops-icon codrops-icon--drop" href="https://tympanus.net/codrops/?p=33779" title="Back to the article"><svg class="icon icon--drop"><use xlink:href="#icon-drop"></use></svg></a>
-					</div>
-					<h1 class="codrops-header__title">Gradient Topography Animation</h1>
-				</header>
-				<a class="github" href="https://github.com/codrops/GradientTopographyAnimation/" title="Find this project on GitHub"><svg class="icon icon--github"><use xlink:href="#icon-github"></use></svg></a>
-				<p class="info">Inspired by <a href="https://polarvectors.com/shop/textures/gradient-topography/">Gradient Topography</a></p>
-			</div>
-			<div class="content">
-				<nav class="menu">
-					<a href="#" class="menu__item">Analysis</a>
-					<a href="#" class="menu__item">Models</a>
-					<a href="#" class="menu__item">Philosophy</a>
-					<a href="#" class="menu__item">Comparisons</a>
-					<a href="#" class="menu__item">Specimens</a>
-					<a href="#" class="menu__item">Projects</a>
-				</nav>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evan's Portfolio Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="base.css" />
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" type="text/css" href="SPLATS/base.css" />
+  <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+  
+</head>
+<body>
+  <header id="header-content">
+    <h1>Evan Aramayo</h1>
+	<!-- <h3>Undergraduate Jr in Computer Science (BS) | Minoring: Cyber Security</h3>
+    <h2>Currently Studying at The University Of Rhode Island</h2>
+	<h4>Expected Graduate (Spring 2027)</h4> -->
+  </header>
+
+  <svg class="hidden">
+	<symbol id="icon-arrowback" viewBox="0 0 24 18">
+		<title>arrow-back</title>
+		<path d="M7.839 17.296a.847.847 0 0 0 1.21 0 .853.853 0 0 0 0-1.198L2.914 9.965h20.238A.843.843 0 0 0 24 9.118a.852.852 0 0 0-.847-.86H2.915l6.133-6.12a.868.868 0 0 0 0-1.21.847.847 0 0 0-1.21 0L.255 8.513a.833.833 0 0 0 0 1.197l7.585 7.586z" />
+	</symbol>
+  </svg>
+
+
+  <section class="connect">
+    <div class="linkbtns">
+      <a href="https://www.linkedin.com/in/kaddengrant/" target="_blank" rel="noopener noreferrer">
+        <button class="learn-more">Linkedin</button>
+      </a>
+    </div>
+
+    <div class="linkbtns">
+      <a href="https://github.com/KEG52" target="_blank" rel="noopener noreferrer">
+        <button class="learn-more">Github</button>
+    </a>
+    </div>
+
+    <div class="linkbtns">
+      <a href="/Documents/KaddenGrant RESUME (SIMPLE) 2025.docx (2).pdf" target="_blank" rel="noopener noreferrer">
+        <button class="learn-more">Resume</button>
+    </a>
+    </div>
+
+    <div class="linkbtns">
+      <a href="mailto:grantk5205@gmail.com" target="_blank" rel="noopener noreferrer">
+        <button class="learn-more">Email</button>
+    </a>
+    </div>
+  </section>
+
+  <section>
+	<nav class="menu">
+		<a href="#" class="menu__item">Certifications</a>
+		<a href="#" class="menu__item">Experience</a>
+		<a href="#" class="menu__item">Projects</a>
+		<a href="#" class="menu__item">About Me</a>
+		
+
+	</nav>
+</div>
+</section>
+    
+  <section>
+    <div class="content">
+		
+				
 				<svg class="scene" width="1440" height="800" preserveAspectRatio="xMinYMid slice" viewBox="0 0 1440 800" xmlns:pathdata="http://www.codrops.com/">
 					<defs>
-						<linearGradient id="gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
+						<linearGradient id="gradient-1" x1="%" y1="0%" x2="100%" y2="100%">
 							<stop stop-color="#f19872"/>
 							<stop offset="1" stop-color="#e86c9a"/>
 						</linearGradient>
+                        
 						<linearGradient id="gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
 							<stop stop-color="#0947db"/>
 							<stop offset="1" stop-color="#07d89d"/>
 						</linearGradient>
+
 						<linearGradient id="gradient-3" x1="0%" y1="0%" x2="100%" y2="100%">
 							<stop stop-color="#ee2d29"/>
 							<stop offset="1" stop-color="#f8ae2c"/>
 						</linearGradient>
+
 						<linearGradient id="gradient-4" x1="0%" y1="0%" x2="100%" y2="100%">
 							<stop stop-color="#3a3d98"/>
 							<stop offset="1" stop-color="#6f22b9"/>
 						</linearGradient>
+
 						<linearGradient id="gradient-5" x1="0%" y1="0%" x2="100%" y2="100%">
 							<stop stop-color="#9d316e"/>
 							<stop offset="1" stop-color="#de2d3e"/>
 						</linearGradient>
+
 						<linearGradient id="gradient-6" x1="0%" y1="0%" x2="100%" y2="100%">
 							<stop stop-color="#00ac53"/>
 							<stop offset="1" stop-color="#23c3e0"/>
@@ -125,6 +147,7 @@
 						<path d="M 1316,322 C 1349,337.5 1392,337 1427,325.7 1440,320.3 1450,303.4 1441,291.6 1425,271.1 1429,245 1432,221.1 1441,153.6 1479,91.97 1485,22.72 1487,-1.013 1460,-19.56 1435,-24.24 1402,-28.47 1363,-13.3 1350,16.32 1343,36.99 1332,54.03 1318,72.92 1283,111.6 1235,142.5 1215,191.8 1206,212.7 1225,233.6 1240,248.3 1264,274.5 1282,306.8 1316,322 Z" pathdata:id="M 321.1,1104 C 737.9,1196 1281,1193 1723,1126 1887,1094 2014,993.1 1900,923 1698,801.1 1748,645.9 1786,503.8 1900,102.4 2380,-264 2456,-675.8 2481,-816.9 2140,-927.2 1824,-955 1407,-980.2 914.7,-890 750.5,-713.9 662.1,-591 523.2,-489.6 346.3,-377.3 -95.71,-147.3 -701.9,36.4 -954.5,329.5 -1068,453.8 -828.2,578.1 -638.8,665.5 -335.7,821.3 -108.3,1013 321.1,1104 Z"/>
 						<path d="M 1324,301.4 C 1346,310.6 1377,312.3 1400,297 1414,287.4 1415,271 1411,256.5 1399,221.9 1422,183.4 1434,146.7 1448,101.5 1474,57.24 1473,10.72 1472,-13.48 1442,-25.38 1416,-19.85 1394,-14.87 1375,4.724 1369,25.13 1358,62.76 1318,89.1 1296,124.5 1277,153.2 1258,185.1 1262,216.9 1266,249.7 1288,274.2 1312,294.3 1316,297.7 1320,300.1 1324,301.4 Z" pathdata:id="M 422.1,981.2 C 700,1036 1092,1046 1382,955.1 1559,898 1571,800.5 1521,714.2 1369,508.5 1660,279.6 1811,61.38 1988,-207.4 2317,-470.6 2304,-747.2 2291,-891.1 1912,-961.8 1584,-928.9 1306,-899.3 1066,-782.8 990.5,-661.5 851.5,-437.7 346.3,-281.1 68.48,-70.62 -171.5,100 -411.5,289.7 -360.9,478.8 -310.4,673.8 -32.56,819.5 270.6,939 321.1,959.2 371.6,973.5 422.1,981.2 Z"/>
 					</g>
+					
 					<g class="blob-6">
 						<path d="M 1171,594.5 C 1147,625.3 1122,659.2 1123,702.9 1123,720.8 1146,733 1163,736 1216,745.3 1264,736.1 1317,756.3 1365,774.6 1408,813.4 1458,827.8 1493,838 1529,836.4 1557,823.5 1578,814 1601,801.2 1610,779.1 1619,754.7 1606,723.2 1588,697.2 1575,678.4 1561,660.2 1547,641.7 1529,616.5 1512,590.5 1492,566.7 1474,544.6 1456,518.1 1429,506.4 1384,486.9 1339,496.4 1301,508.5 1249,524.9 1202,553.4 1171,594.5 Z" pathdata:id="M -2246,-123.4 C -2547,220.3 -2860,598.7 -2848,1086 -2848,1286 -2559,1422 -2346,1456 -1681,1560 -1079,1457 -414.8,1682 187.1,1887 726.3,2320 1353,2480 1792,2594 2244,2576 2595,2432 2858,2326 3147,2183 3259,1937 3372,1664 3209,1313 2984,1023 2821,812.9 2645,609.8 2469,403.4 2244,122.1 2030,-168 1780,-433.6 1554,-680.3 1328,-976 989.7,-1107 425.4,-1324 -138.9,-1218 -615.5,-1083 -1268,-900.1 -1857,-582.1 -2246,-123.4 Z"/>
 						<path d="M 1186,599 C 1167,624 1147,653 1153,689.1 1156,709.7 1184,719.5 1201,719.5 1253,719.5 1308,729.7 1360,759.8 1397,781.2 1431,810.8 1470,820.1 1525,833.3 1581,818.2 1602,776.6 1614,753.5 1600,722.3 1582,696.9 1556,660 1528,623.7 1504,585.6 1483,552.5 1450,523.3 1413,513.7 1367,501.8 1325,511.5 1287,525.3 1251,538.3 1220,559.7 1196,587.3 1193,591.4 1189,595.2 1186,599 Z" pathdata:id="M -2058,-73.16 C -2296,205.8 -2547,529.5 -2471,932.4 -2434,1162 -2083,1272 -1869,1272 -1217,1272 -527.7,1385 124.4,1721 588.4,1960 1015,2291 1504,2394 2194,2542 2896,2373 3159,1909 3310,1651 3134,1303 2908,1019 2582,607.6 2231,202.5 1930,-222.7 1667,-592.1 1253,-918 789,-1025 212.2,-1158 -314.5,-1050 -791,-895.7 -1242,-750.6 -1631,-511.7 -1932,-203.7 -1970,-158 -2020,-115.6 -2058,-73.16 Z"/>
@@ -138,35 +161,349 @@
 			</div>
 			<div class="content content--reveal">
 				<div class="content__inner">
-					<h2 class="content__title">Analysis</h2>
-					<h3 class="content__subtitle">The rapid handle injects into the bashful lift.</h3>
+					<h2 class="content__title">Certifications</h2>
+					<h3 class="content__subtitle">"We are what we repeatedly do. Excellence, then, is not an act, but a habit." — Aristotle</h3>
+					<div class="certifications">
+						<div class="cert-card" onclick="openCertModal('cert1')">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" alt="Oracle Badge">
+							<h3>OCI Foundations</h3>
+						</div>
+						
+						<div id="cert1" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert1')">&times;</span>
+								<h2>Orcale Cloud Infrastructure 2025 Certified Foundations Associate</h2>
+								<div class="container">
+									<img src="/imgs/oracle.jpg" class="description"  alt="OCI CERT" style="width: 100%; border-radius: 8px; margin-top: 1rem;">
+									<div class="overlay">
+										<div class="text">Familiarity with core OCI services including Compute, Storage, Networking, Database, Developer, Analytics, AI, Observability and Hybrid services</div>
+									</div>
+								</div>
+								
+								<p>Issued by Oracle in January 2025</p>
+								<a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=5D967EDBD2AC7CE3A378509F0B0ADD4FA7DBBA6C7D22471FAE84FC08F045617E" target="_blank">Verify Credential</a>
+							</div>
+						</div>
+
+						<div class="cert-card" onclick="openCertModal('cert2')">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" alt="Oracle Badge">
+							<h3>CISCO Wireless Essentials </h3>
+						</div>
+						<div id="cert2" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert2')">&times;</span>
+								<h2>CISCO Wireless Essentials</h2>
+								<div class="container">
+									<img src="/imgs/ccna.png" class="description" alt="OCI CERT" style="width: 100%; border-radius: 8px; margin-top: 1rem;">
+									<div class="overlay">
+										<div class="text">Routing, Access Connectivity, Wireless LAN Controllers, High Availability, First-hop Redundancy, Switching Protocols, IP services, Access Security</div>
+									</div>
+								</div>
+								
+								<p>Issued by CISCO in May 2023</p>
+								<a href="https://www.netacad.com/courses/ccna-switching-routing-wireless-essentials?courseLang=en-US" target="_blank">Verify Credential</a>
+							</div>
+						</div>
+
+						<div class="cert-card" onclick="openCertModal('cert3')">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" alt="Oracle Badge">
+							<h3>CISCO Networking </h3>
+						</div>
+						<div id="cert3" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert3')">&times;</span>
+								<h2>CISCO Networking</h2>
+								<div class="container">
+									<img src="/imgs/cisco networking.png" class="description" alt="OCI CERT" style="width: 100%; border-radius: 8px; margin-top: 1rem;">
+									<div class="overlay">
+										<div class="text">IP Subnetting, IPv4 And IPv6 , Ethernet, IP connectivity, Addressing, Network Fundamentals, IP services, Switching, Security Fundamentals</div>
+									</div>
+								</div>
+								
+								<p>Issued by CISCO in March 2023</p>
+								<a href="https://www.netacad.com/courses/ccna-introduction-networks?courseLang=en-US" target="_blank">Verify Credential</a>
+							</div>
+						</div>
+
+						<div class="cert-card" onclick="openCertModal('cert4')">
+							<img src="/imgs/IBM_logo.svg.png" alt="IBM Logo">
+							<h3>Cybersecurity Basics V2</h3>
+							<h3>IBM</h3>
+						</div>
+						<div id="cert4" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert4')">&times;</span>
+								<h2>Cybersecurity Basics V2</h2>
+								<div class="container">
+									<img src="/imgs/Screenshot 2025-06-05 212914.png" class="description" alt="OCI CERT" style="width: 100%; border-radius: 8px; margin-top: 1rem;">
+									<div class="overlay">
+										<!-- <li>Demonstrated knowledge of fundamental cybersecurity concepts, including threat types, cyberattacks, and preventive strategies</li> -->
+										<div class="text">core cybersecurity principles, including authentication, user access management, physical threats, and security controls</div>
+										<!-- <LI>Prepared to apply foundational cybersecurity skills to real-world scenarios in an entry-level role</LI> -->
+									</div>
+								</div>
+								
+								<p>Issued by CISCO in May 2023</p>
+								<a href="https://www.credly.com/badges/b767e65c-2194-4331-9f1a-5ba9ff2a054f/public_url" target="_blank">Verify Credential</a>
+							</div>
+						</div>
+					</div>
 				</div>
+				
+
+				
 				<div class="content__inner">
-					<h2 class="content__title">Models</h2>
-					<h3 class="content__subtitle">The sympathetic picture adds into the freezing gift.</h3>
+					<h2 class="content__title">Experience</h2>
+					<h3 class="content__subtitle">"Experience is the teacher of all things."— Julius Caesar</h3>
+					<div class="certifications">
+						<!-- ML4STS -->
+						<div class="cert-card" onclick="openCertModal('cert10')">
+							<img src="/imgs/ML$STS.png" alt="Logo">
+							<h4>Machine Learning for Socio-technical systems</h4>
+							<h5>URI ML4STS Lab, Kingston, RI</h5>
+							<h5>Jan 2025 - Present</h5>
+						</div>
+						 <div id="cert10" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert10')">&times</span>
+								<h2>Undergraduate Researcher - ML4STS</h2>
+								<h3>January 2024 - Present </h3>
+								<li>Conduct research focusing on fairness in automated decision-making systems.</li>
+								<li>Apply data science and ML models to analyze societal impacts and improve fairness in AI systems</li>
+								<li>Python programming & LLM Models </li>
+							
+								<a href="https://ml4sts.com/" target="blank">Learn More</a>
+							</div>
+						 </div>
+						 <!-- Fellowship -->
+						 <div class="cert-card" onclick="openCertModal('cert11')">
+							<img src="/imgs/Rhode_Island_Rams_logo.svg" alt="Logo">
+							<h3>Ethical Data Science Fellowship</h3>
+							<H5>University of Rhode Island, Kingston, RI</H5>
+							<h5>Summer 2025</h5>
+						</div>
+						 <div id="cert11" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert11')">&times</span>
+								<h2>Testing Adversarial Robustness of LLM Agents in Ethical Data Science Experimentation</h2>
+								<h3>Mentored by - Dr. Sarah Brown</h3>
+								<li>Built and tested LLM Agents with open-source models (e.g., DeepSeek, BERT, OLLAMA) for secure and ethical data science experimentation</li>
+								<li>Designed adversarial prompts to evaluate model integrity, detect manipulation, and enforce best practices</li>
+								<li>Leveraged Python, Git, and system tools on Linux/HPC environments to implement and test models.</li>
+							
+								<a href="https://www.linkedin.com/in/smariebrown/" target="blank"> About Dr. Brown </a>
+								<!-- <a href="" target="blank"> Learn More </a> -->
+							</div>
+						 </div>
+
+						 <!-- Riseup -->
+						  <div class="cert-card" onclick="openCertModal('cert12')">
+							<img src="/imgs/Riseup.svg" alt="Logo">
+							<h3>Rise-Up Ideation Studio | 401 Tech Bridge</h3>
+							<H5>University of Rhode Island, Kingston, RI</H5>
+							<h5>Fall 2025</h5>
+						</div>
+						 <div id="cert12" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert12')">&times</span>
+								<h2>Innovation & Entrepreneurship Challenges Project</h2>
+								<h3>Mentored by Founder & CEO - Nishita Roy-Pope</h3>
+								<li>Develop skills in problem-solving, business strategy, and collaboration</li>
+								<li>Engaged and mentored with industry leaders,CEOs, and Founders</li>
+								<li>Applied entrepreneurial frameworks & innovation with real-world applications</li>
+								<li>Devloped Mental Health App for colleges and workplace environments</li>
+							
+								<a href="https://www.linkedin.com/in/nishitaroypope/" target="blank"> About Nishita Roy-Pope</a>
+								<!-- <a href="" target="blank"> Learn More </a> -->
+							</div>
+						 </div>
+
+						 <!-- RIFC INTERNSHIP -->
+						  <div class="cert-card" onclick="openCertModal('cert13')">
+							<img src="/imgs/Rhode_Island_FC_logo.png" alt="Logo">
+							<h3>Rhode Island Football Club</h3>
+							<h4>Production Assistant</h4>
+							<H5>Centreville Bank Stadium; Pawtucket, RI</H5>
+							<h5>Fall 2025 - Present</h5>
+						</div>
+						 <div id="cert13" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert13')">&times</span>
+								<h2>Production Assistant</h2>
+								<h4>(Former Intern)</h4>
+								<h3>Mentored by - Adrian Tarbox (Production Manager) </h3>
+								<li>Gained hands-on experience with digital production tools, network-based video systems, and real-time broadcast environments.</li>
+								<li>Applied computer science knowledge (troubleshooting, systems configuration, networking) to support multimedia operations.</li>
+								<li>Apply frameworks & innovation with real-world applications</li>
+								<li>Developed skills in communication and technical coordination within fast-paced, team-oriented live production settings.</li>
+							
+								<a href="https://www.linkedin.com/in/adriantarbox/" target="blank"> About Adrian</a>
+								<!-- <a href="" target="blank"> Learn More </a> -->
+							</div>
+						 </div>
+
+						  <!-- Wayfair Early Leaders Program-->
+						  <div class="cert-card" onclick="openCertModal('cert14')">
+							<img src="https://brandlogos.net/wp-content/uploads/2025/05/wayfair_2023-logo_brandlogos.net_ebl6f-512x117.png" alt="Wayfair" />
+
+							<h3>Wayfair Early Leaders Program</h3>
+							<H5>Wayfair - Boston, MA</H5>
+							<h5>Spring 2025</h5>
+						</div>
+						 <div id="cert14" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert14')">&times</span>
+								<h2>Program Participant</h2>
+								<h3>Mentored by - Kshitij Zutshi </h3>
+								<li>Engaged in workshops and case studies led by Wayfair professionals to explore e-commerce, product development, and customer experience.</li>
+								<li>Collaborated with a diverse cohort of student leaders to develop solutions for real-world business challenges.</li>
+								<li>Gained mentorship from Wayfair employees, including guidance on professional development, resume building, and networking in tech.</li>
+								<li>Developed skills in communication and technical coordination within fast-paced, team-oriented live production settings.</li>
+							
+								<a href="https://www.linkedin.com/in/kshitij-zutshi/" target="blank"> About Kshitij</a>
+								<!-- <a href="" target="blank"> Learn More </a> -->
+							</div>
+						 </div>
+
+						 <!-- Walmart -->
+						 <div class="cert-card" onclick="openCertModal('cert15')">
+							<img src="/imgs/Walmart_logo.svg.png" alt="Logo">
+							<h3>Walmart</h3>
+							<h5>Newport, RI</h5>
+							<h5>June 2021 - September 2024</h5>
+						</div>
+						 <div id="cert15" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert15')">&times</span>
+								<h2>Electronics Sales Associate</h2>
+								<li>Assisted customers with product selection, troubleshooting, and technical questions to improve satisfaction and drive sales.</li>
+								<li>Provided knowledgeable customer service for electronics products including laptops, TVs, gaming consoles, mobile devices, and accessories</li>
+								<li>Collaborated with team members to complete tasks</li>
+
+							</div>
+						 </div>
+
+
+					</div>
+
+			
+
+
 				</div>
-				<div class="content__inner">
-					<h2 class="content__title">Philosophy</h2>
-					<h3 class="content__subtitle">The dimwitted purchase can't fasten the poem.</h3>
-				</div>
-				<div class="content__inner">
-					<h2 class="content__title">Comparisons</h2>
-					<h3 class="content__subtitle">The melancholy building really paused the relation.</h3>
-				</div>
-				<div class="content__inner">
-					<h2 class="content__title">Specimens</h2>
-					<h3 class="content__subtitle">The gabby priority handles into the deadly dot.</h3>
-				</div>
+
 				<div class="content__inner">
 					<h2 class="content__title">Projects</h2>
-					<h3 class="content__subtitle">The hungry purple names into the low tower.</h3>
+					<h3 class="content__subtitle">"Start where you are, with what you have. Make something of it and never be satisfied."</h3>  
+					<h3 class="content__subtitle">— George Washington Carve</h3>
+					<div class="certifications">
+						<!-- UNICLOUD -->
+						<div class="cert-card" onclick="openCertModal('cert30')">
+							<img src="https://brandlogos.net/wp-content/uploads/2020/09/raspberry-pi-logo-512x512.png" alt="pi" />
+							<h4>UNICLOUD</h4>
+							<h5>Home Network Monitoring & Cloud Storage Access</h5>
+							<h5>Raspberry Pi</h5>
+						</div>
+						 <div id="cert30" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert30')">&times</span>
+								<h2>Home Network Monitoring & Cloud Access</h2>
+								<h3>Tech Stack: Python, Nmap, Tailscale, Bash, Discord Webhooks, Linux (Raspberry Pi OS)</h3>
+								<p>This Raspberry Pi project combines cybersecurity, network automation, and cloud storage into a unified system. I built a lightweight network 
+								monitoring and alert system using Python and Nmap that scans for connected devices, logs presence history, and detects rogue access points. Real-time alerts are pushed via Discord webhooks to flag suspicious activity.</p>
+								<li>Built an automated network intrusion detection system for a home LAN</li>
+								<li>Set up secure remote access and file transfer over Tailscale</li>
+								<li>Integrated lightweight alerting via Discord for real-time updates</li>
+							
+								<a href="https://ml4sts.com/" target="blank">Learn More</a>
+							</div>
+						 </div>
+
+						 <!-- FACEGUARD -->
+						<div class="cert-card" onclick="openCertModal('cert31')">
+							<img src="/imgs/security.png" alt="faceguard" />
+							<h4>Face Guard</h4>
+							<h5>AI-Powered Facial Recognition Attendance System</h5>
+						</div>
+						 <div id="cert31" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert31')">&times</span>
+								<h2>Face Guard</h2>
+								<h3>Tech Stack: Python, OpenCV, Hugging Face, CSV</h3>
+								<p>Designed a facial recognition-based attendance system using Python, OpenCV, and Face Recognition API. 
+								Implemented real-time face detection, image cropping, and database comparison for identity verification with automated attendance logging.</p>
+							
+								<a href="https://github.com/KEG520/Face-Guard" target="blank">Learn More</a>
+							</div>
+						 </div>
+					
+
+					<!-- VENTSPACE  -->
+						<div class="cert-card" onclick="openCertModal('cert32')">
+							<img src="/imgs/icons8-brain-96.png" alt="ventspace" />
+							<h4>Vent Space</h4>
+							<h5>(In Development)</h5>
+							<h5>Founder & Product Designer</h5>
+						</div>
+						 <div id="cert32" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert32')">&times</span>
+								<h2>Vent Space</h2>
+								<li>Developed a campus-focused mental health platform enabling anonymous check-ins and real-time well-being analytics</li>
+								<li>Integrated support resources and peer forums to foster community engagement and reduce stigma around mental health</li>
+								<li>Collaborated with mental health professionals to align features with ethical standards and student needs</li>
+							
+								<!-- <a href="https://ml4sts.com/" target="blank">Learn More</a> -->
+							</div>
+						 </div>
+
+						 <!-- Adversial Testing   -->
+						<div class="cert-card" onclick="openCertModal('cert33')">
+							<img src="/imgs/icons8-agent-100.png" alt="LLM" />
+							<h4>LLM Agent Adversarial Robustness Research</h4>
+							<h5>(In Progress)</h5>
+							
+						</div>
+						 <div id="cert33" class="modal">
+							<div class="modal-content">
+								<span class="close" onclick="closeCertModal('cert33')">&times</span>
+								<h2>Vent Space</h2>
+								<h3>Tech Stack: Python, Hugging Face, Ollama</h3>
+								<li>Investigatomg robustness of language model agents against adversarial prompts using Hugging Face and Ollama</li>
+								<li>Developing agent behaviors to defend against prompt injection and bias manipulation</li>
+							
+								<!-- <a href="https://ml4sts.com/" target="blank">Learn More</a> -->
+							</div>
+						 </div>
+					</div>	
 				</div>
-				<button class="content__close"><svg class="icon icon--arrowback"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowback"></use></svg></button>
+
+				<div class="content__inner">
+					<h2 class="content__title">About Me</h2>
+					<h3 class="content__subtitle"></h3>
+					
+				</div>
+				<button class="content__close">
+					<svg class="icon icon--arrowback">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowback"></use>
+					</svg>
+				</button>
 			</div>
-		</main>
-		<script src="js/charming.min.js"></script>
-		<script src="js/anime.min.js"></script>
-		<script src="js/demo.js"></script>
-		<script src="js/main.js"></script>
-	</body>
+  </section>
+
+  <footer>
+    &copy; 2025
+  </footer>
+  <script src="script.js" defer></script>
+  
+  <script src="/SPLATS/charming.min.js"></script>
+	<script src="/SPLATS/anime.min.js"></script>
+	<script src="/SPLATS/demo.js"></script>
+	<script src="/SPLATS/main.js"></script>
+	<script src="cert.js"></script>
+
+
+  
+ 
+
+</body>
 </html>
