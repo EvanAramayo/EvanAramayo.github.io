@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Experience Showcase</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <section id="showcase">
+    <div class="filters">
+      <button onclick="filterCards('all')">Show All</button>
+      <button onclick="filterCards('skills')">Skills</button>
+      <button onclick="filterCards('experience')">Experience</button>
+    </div>
+
+    <div class="grid">
+      <!-- Skill Card -->
+      <div class="flip-container" onclick="this.classList.toggle('flipped')" data-type="skills">
+        <div class="flipper">
+          <div class="card front skill">
+            <h3>Python</h3>
+            <p>Scripting, automation, ML pipelines</p>
+          </div>
+          <div class="card back skill">
+            <h3>Python</h3>
+            <p>Used in ML4STS, Raspberry Pi projects, and automation scripts.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skill Card -->
+      <div class="flip-container" onclick="this.classList.toggle('flipped')" data-type="skills">
+        <div class="flipper">
+          <div class="card front skill">
+            <h3>C++</h3>
+            <p>Efficient systems programming and algorithms</p>
+          </div>
+          <div class="card back skill">
+            <h3>C++</h3>
+            <p>2+ years in data structures, LeetCode, and systems work.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience Card -->
+      <div class="flip-container" onclick="this.classList.toggle('flipped')" data-type="experience">
+        <div class="flipper">
+          <div class="card front experience">
+            <h3>ML4STS Lab</h3>
+            <p>ML researcher focusing on fairness in AI</p>
+          </div>
+          <div class="card back experience">
+            <h3>ML4STS Lab</h3>
+            <p>Jan 2024 – Present<br>Worked on fairness audits of LLMs and bias detection.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience Card -->
+      <div class="flip-container" onclick="this.classList.toggle('flipped')" data-type="experience">
+        <div class="flipper">
+          <div class="card front experience">
+            <h3>RISE-UP</h3>
+            <p>Innovation & entrepreneurship challenge</p>
+          </div>
+          <div class="card back experience">
+            <h3>RISE-UP</h3>
+            <p>Built startup ideas and mentored by tech leaders, 2024.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
