@@ -4,9 +4,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 *::before {
 	box-sizing: border-box;
 }
-
+ 
 html {
-	background: #ffffff;
+	background: #000000;
 }
 
 body {
