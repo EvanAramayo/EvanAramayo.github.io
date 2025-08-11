@@ -14,15 +14,15 @@ def relative_to_assets(path: str) -> Path:
 
 def embed_figure(fig, master, x, y, w, h):
     canvas_fig = FigureCanvasTkAgg(fig, master=master)
-    widget     = canvas_fig.get_tk_widget()
+    widget = canvas_fig.get_tk_widget()
     widget.place(x=x, y=y, width=w, height=h)
     canvas_fig.draw()
 
 
 # Peripheral
-peripherals    = ["Reactor"]
-current_index  = 0
-cycle_count    = 1
+peripherals = ["Reactor"]
+current_index = 0
+cycle_count = 1
 system_running = False
 
 def process_peripherals():
@@ -54,7 +54,7 @@ def stop_system():
 # Load 
 excel_path = OUTPUT_PATH / "RPI_Sensor_datalogs.xlsx"
 all_sheets = pd.read_excel(excel_path, sheet_name=None)
-sheets     = {}
+sheets = {}
 
 for name, df in all_sheets.items():
     if "Unnamed: 1" in df.columns:
@@ -74,7 +74,9 @@ def prep_di(raw, proc):
     for d in (raw, proc):
         d.drop(index=0, inplace=True, errors="ignore")
         d.reset_index(drop=True, inplace=True)
-        d.rename(columns={"Unnamed: 4":"ph", "Unnamed: 7":"co2", "Unnamed: 9":"ec"}, inplace=True)
+        # Updated to include Air temp, Water temp, and Pressure columns
+        d.rename(columns={"Unnamed: 4":"ph", "Unnamed: 7":"co2", "Unnamed: 9":"ec",
+                          "Unnamed: 6":"air_temp", "Unnamed: 5":"water_temp", "Unnamed: 8":"pressure"}, inplace=True)
         d["datetime"] = pd.to_datetime(d["timestamp"], errors="coerce")
     return raw, proc
 
@@ -102,94 +104,155 @@ canvas = Canvas(window, bg="#2A2F4F", height=802, width=1153,
 canvas.place(x=0, y=0)
 
 # Top bar & logo
-canvas.create_rectangle(0, 5, 1151, 96, fill="#E5BEEC", outline="")
-raw_img  = Image.open(relative_to_assets("image_1.png"))
-resized  = raw_img.resize((170, 90), Image.LANCZOS)
+canvas.create_rectangle(0, -5, 1151, 96, fill="#E5BEEC", outline="")
+raw_img = Image.open(relative_to_assets("image_1.png"))
+resized = raw_img.resize((295, 90), Image.LANCZOS)
 logo_img = ImageTk.PhotoImage(resized)
 Label(window, image=logo_img, bg="#E5BEEC").place(x=0, y=-4)
 
 # Start/Stop buttons
 btn1 = PhotoImage(file=relative_to_assets("button_1.png"))
 Button(image=btn1, borderwidth=0, highlightthickness=0,
-       command=start_system, relief="flat").place(x=8,   y=101, width=81, height=40)
+       command=start_system, relief="flat").place(x=8, y=101, width=81, height=40)
 btn2 = PhotoImage(file=relative_to_assets("button_2.png"))
 Button(image=btn2, borderwidth=0, highlightthickness=0,
-       command=stop_system, relief="flat").place(x=97,  y=101, width=81, height=40)
+       command=stop_system, relief="flat").place(x=97, y=101, width=81, height=40)
 
 # Layout rectangles
-canvas.create_rectangle(8,   151, 411,  519, fill="#917FB3", outline="")  # DI-SEA 1
-canvas.create_rectangle(416, 153, 819,  519, fill="#5F4A87", outline="")  # DI-SEA 2
-canvas.create_rectangle(8,   530, 308,  792, fill="#5F4A87", outline="")  # Doser Peripheral
-canvas.create_rectangle(316, 529, 616,  654, fill="#917FB3", outline="")  # Reactor Peripheral
+canvas.create_rectangle(8, 151, 411, 519, fill="#917FB3", outline="")   # DI-SEA 1
+canvas.create_rectangle(416, 153, 819, 519, fill="#5F4A87", outline="")   # DI-SEA 2
+canvas.create_rectangle(8, 530, 308, 792, fill="#5F4A87", outline="")   # Doser Peripheral
+canvas.create_rectangle(316, 529, 616, 654, fill="#917FB3", outline="")   # Reactor Peripheral
 
 # System Power Metrics under Reactor Peripheral
 canvas.create_rectangle(316, 660, 616, 785, fill="#5F4A87", outline="")   # System Power Metrics
 
-canvas.create_rectangle(822, 152,1148,  392, fill="#5F4A87", outline="")  # Peripheral Status
-canvas.create_rectangle(822, 152,1147,  185, fill="#917FB3", outline="")  # Status Header
-canvas.create_rectangle(822, 399,1145,  524, fill="#917FB3", outline="")  # Terminal Area
-canvas.create_rectangle(825, 398,1144,  421, fill="#5F4A87", outline="")  # Terminal Header
+canvas.create_rectangle(822, 152, 1148, 392, fill="#5F4A87", outline="")   # Peripheral Status
+canvas.create_rectangle(822, 152, 1147, 185, fill="#917FB3", outline="")   # Status Header
+canvas.create_rectangle(822, 399, 1145, 524, fill="#917FB3", outline="")   # Terminal Area
+canvas.create_rectangle(825, 398, 1144, 421, fill="#5F4A87", outline="")   # Terminal Header
 
 # Cycle label & number
 canvas.create_rectangle(1010, 98, 1145, 143, fill="#917FB3", outline="")
 canvas.create_text(1032, 107, anchor="nw", text="Cycle:", fill="#FFFFFF", font=("Inter Bold", -22))
-cycle_text_id = canvas.create_text(1100,107, anchor="nw", text=str(cycle_count),
+cycle_text_id = canvas.create_text(1100, 107, anchor="nw", text=str(cycle_count),
                                    fill="#FFFFFF", font=("Inter Bold", -22))
 
 # Section titles
-canvas.create_text(158, 147, anchor="nw", text="DI-SEA 1",           fill="#FFFFFF", font=("Inter Bold", -22))
-canvas.create_text(574, 152, anchor="nw", text="DI-SEA 2",           fill="#FFFFFF", font=("Inter Bold", -22))
-canvas.create_text(77,  529, anchor="nw", text="Doser Peripheral",   fill="#A34D18", font=("Inter Bold", -20))
+canvas.create_text(158, 147, anchor="nw", text="DI-SEA 1", fill="#FFFFFF", font=("Inter Bold", -22))
+canvas.create_text(574, 152, anchor="nw", text="DI-SEA 2", fill="#FFFFFF", font=("Inter Bold", -22))
+canvas.create_text(77, 529, anchor="nw", text="Doser Peripheral", fill="#A34D18", font=("Inter Bold", -20))
 canvas.create_text(377, 529, anchor="nw", text="Reactor Peripheral", fill="#27EF00", font=("Inter Bold", -20))
 canvas.create_text(330, 665, anchor="nw", text="System Power Metrics", fill="#FFC300", font=("Inter Bold", -18))
-canvas.create_text(915, 397, anchor="nw", text="Peripheral Status",  fill="#DC1A51", font=("Inter Bold", -17))
+canvas.create_text(915, 397, anchor="nw", text="Peripheral Status", fill="#DC1A51", font=("Inter Bold", -17))
 
 # Status headers
 for x, label in [(828, "Time"), (938, "DeviceName"), (1052, "Error")]:
     canvas.create_text(x, 157, anchor="nw", text=label, fill="#FFFFFF", font=("Inter Bold", -15))
 canvas.create_rectangle(935, 184, 936, 392, fill="#FFFFFF", outline="")
-canvas.create_rectangle(1033,184,1034,392, fill="#FFFFFF", outline="")
+canvas.create_rectangle(1033, 184, 1034, 392, fill="#FFFFFF", outline="")
 
 # ——————————————————————————————
 # Embed Plots
 # ——————————————————————————————
+
 # DI-SEA 1 plots
-for (x,y,name,color,raw,proc) in [
-    (140,190,"co2","#FF6B6B",di1_raw,di1_proc),
-    (8,245,"ec","#5F4A87",di1_raw,di1_proc),
-    (8,339,"ph","#E5BEEC",di1_raw,di1_proc),
-]:
-    fig = Figure(dpi=80); ax = fig.add_subplot(111)
-    l1 = ax.plot(raw["datetime"],  raw[name],  label="Raw",       color=color)
-    l2 = ax.plot(proc["datetime"], proc[name], label="Processed", color="#27EF00")
-    ax.set_title(name.upper(), color="#FFFFFF", fontsize=10)
-    ax.legend(fontsize=6, loc="upper right")
-    ax.tick_params(labelsize=8, rotation=20)
+di1_plots_config = [
+    {"name": "co2", "y_label": "Last CO2", "x": 10, "y": 185, "width": 180, "height": 130, "raw_color": "blue", "proc_color": "white"},
+    {"name": "ec", "y_label": "Last EC", "x": 210, "y": 185, "width": 180, "height": 130, "raw_color": "green", "proc_color": "white"},
+    {"name": "ph", "y_label": "Last pH", "x": 10, "y": 350, "width": 180, "height": 130, "raw_color": "yellow", "proc_color": "white"}
+]
+
+for config in di1_plots_config:
+    fig = Figure(dpi=80, figsize=(2, 1.5), facecolor="#2A2F4F")
+    ax = fig.add_subplot(111)
+    
+    # Plot raw and processed data
+    l1 = ax.plot(di1_raw["datetime"], di1_raw[config["name"]], color=config["raw_color"], label=f"Calibrated_{config['name'].upper()}")
+    l2 = ax.plot(di1_proc["datetime"], di1_proc[config["name"]], color=config["proc_color"], linestyle='--', label=config['name'].upper())
+    
+    ax.set_title(config["y_label"], color='white', fontsize=10)
+    ax.set_facecolor("#0D1117")
+    ax.tick_params(axis='x', colors='white', labelsize=6)
+    ax.tick_params(axis='y', colors='white', labelsize=6)
+    ax.spines['bottom'].set_color('white')
+    ax.spines['top'].set_color('white')
+    ax.spines['left'].set_color('white')
+    ax.spines['right'].set_color('white')
+    ax.set_xlabel("Time", color='white', fontsize=6)
+    ax.set_ylabel(config["name"].upper(), color='white', fontsize=6)
+    ax.legend(fontsize=6, loc='lower right', facecolor="#2A2F4F", edgecolor='white', labelcolor='white')
+    
     mpc.cursor(l1 + l2, hover=True)
-    embed_figure(fig, window, x, y, 170, 94)
+    
+    embed_figure(fig, window, config["x"], config["y"], config["width"], config["height"])
 
 # DI-SEA 2 plots
-for (x,y,name,color,raw,proc) in [
-    (421,158,"co2","#FF6B6B",di2_raw,di2_proc),
-    (421,253,"ec","#5F4A87",di2_raw,di2_proc),
-    (421,348,"ph","#E5BEEC",di2_raw,di2_proc),
-]:
-    fig = Figure(dpi=80); ax = fig.add_subplot(111)
-    l1 = ax.plot(raw["datetime"],  raw[name],  label="Raw",       color=color)
-    l2 = ax.plot(proc["datetime"], proc[name], label="Processed", color="#27EF00")
-    ax.set_title(name.upper(), color="#FFFFFF", fontsize=10)
-    ax.legend(fontsize=6, loc="upper right")
-    ax.tick_params(labelsize=8, rotation=20)
+di2_plots_config = [
+    {"name": "co2", "y_label": "Last CO2", "x": 420, "y": 185, "width": 180, "height": 130, "raw_color": "blue", "proc_color": "white"},
+    {"name": "ec", "y_label": "Last EC", "x": 620, "y": 185, "width": 180, "height": 130, "raw_color": "green", "proc_color": "white"},
+    {"name": "ph", "y_label": "Last pH", "x": 420, "y": 350, "width": 180, "height": 130, "raw_color": "yellow", "proc_color": "white"}
+]
+
+for config in di2_plots_config:
+    fig = Figure(dpi=80, figsize=(2, 1.5), facecolor="#2A2F4F")
+    ax = fig.add_subplot(111)
+    
+    # Plot raw and processed data
+    l1 = ax.plot(di2_raw["datetime"], di2_raw[config["name"]], color=config["raw_color"], label=f"Calibrated_{config['name'].upper()}")
+    l2 = ax.plot(di2_proc["datetime"], di2_proc[config["name"]], color=config["proc_color"], linestyle='--', label=config['name'].upper())
+    
+    ax.set_title(config["y_label"], color='white', fontsize=10)
+    ax.set_facecolor("#0D1117")
+    ax.tick_params(axis='x', colors='white', labelsize=6)
+    ax.tick_params(axis='y', colors='white', labelsize=6)
+    ax.spines['bottom'].set_color('white')
+    ax.spines['top'].set_color('white')
+    ax.spines['left'].set_color('white')
+    ax.spines['right'].set_color('white')
+    ax.set_xlabel("Time", color='white', fontsize=6)
+    ax.set_ylabel(config["name"].upper(), color='white', fontsize=6)
+    ax.legend(fontsize=6, loc='lower right', facecolor="#2A2F4F", edgecolor='white', labelcolor='white')
+    
     mpc.cursor(l1 + l2, hover=True)
-    embed_figure(fig, window, x, y, 170, 94)
+    
+    embed_figure(fig, window, config["x"], config["y"], config["width"], config["height"])
 
 # Doser Rate plot
 fig_d = Figure(dpi=100); ax_d = fig_d.add_subplot(111)
-l     = ax_d.plot(doser["datetime"], doser["dosing_rate"], color="#FFC300")
+l = ax_d.plot(doser["datetime"], doser["dosing_rate"], color="#FFC300")
 ax_d.set_title("Doser Rate", color="#FFFFFF")
 ax_d.set_xlabel("Time")
 mpc.cursor(l, hover=True)
 embed_figure(fig_d, window, 8, 560, 300, 143)
+
+# Add "Air temp", "Water temp", and "Pressure" labels to DI-SEA 1 and DI-SEA 2
+try:
+    # DI-SEA 1
+    air_temp_di1 = float(di1_proc['air_temp'].iloc[-1])
+    water_temp_di1 = float(di1_proc['water_temp'].iloc[-1])
+    pressure_di1 = float(di1_proc['pressure'].iloc[-1])
+    canvas.create_text(220, 360, anchor="nw", text=f"Air temp: {air_temp_di1:.2f} C", fill="#FFFFFF", font=("Inter Bold", -15))
+    canvas.create_text(220, 390, anchor="nw", text=f"Water temp: {water_temp_di1:.2f} C", fill="#FFFFFF", font=("Inter Bold", -15))
+    canvas.create_text(220, 420, anchor="nw", text=f"Pressure: {pressure_di1:.2f} Pa", fill="#FFFFFF", font=("Inter Bold", -15))
+except (KeyError, IndexError):
+    canvas.create_text(220, 360, anchor="nw", text="Air temp: N/A", fill="#FFFFFF", font=("Inter Bold", -15))
+    canvas.create_text(220, 390, anchor="nw", text="Water temp: N/A", fill="#FFFFFF", font=("Inter Bold", -15))
+    canvas.create_text(220, 420, anchor="nw", text="Pressure: N/A", fill="#FFFFFF", font=("Inter Bold", -15))
+
+try:
+    # DI-SEA 2
+    air_temp_di2 = float(di2_proc['air_temp'].iloc[-1])
+    water_temp_di2 = float(di2_proc['water_temp'].iloc[-1])
+    pressure_di2 = float(di2_proc['pressure'].iloc[-1])
+    canvas.create_text(630, 360, anchor="nw", text=f"Air temp: {air_temp_di2:.2f} C", fill="#FFFFFF", font=("Inter Bold", -15))
+    canvas.create_text(630, 390, anchor="nw", text=f"Water temp: {water_temp_di2:.2f} C", fill="#FFFFFF", font=("Inter Bold", -15))
+    canvas.create_text(630, 420, anchor="nw", text=f"Pressure: {pressure_di2:.2f} Pa", fill="#FFFFFF", font=("Inter Bold", -15))
+except (KeyError, IndexError):
+    canvas.create_text(630, 360, anchor="nw", text="Air temp: N/A", fill="#FFFFFF", font=("Inter Bold", -15))
+    canvas.create_text(630, 390, anchor="nw", text="Water temp: N/A", fill="#FFFFFF", font=("Inter Bold", -15))
+    canvas.create_text(630, 420, anchor="nw", text="Pressure: N/A", fill="#FFFFFF", font=("Inter Bold", -15))
+
 
 # Flow value 
 flow_value = float(reactor["flow"].iloc[-1])
